@@ -1,12 +1,16 @@
 import express from "express";
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken"
+import { zodValidator } from "./middlewares";
 
 const app = express();
-
-
-app.post("/signup",(req,res)=>{
-
+app.use(express.json());
+//@ts-ignore
+app.post("/signup",zodValidator,(req,res)=>{
+    const {email , password} = req.body;
+    res.json({
+        message : "Seccuess"
+    });
 });
 
 app.post("/signin",(req,res)=>{
