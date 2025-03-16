@@ -8,7 +8,7 @@ export const zodValidator = (req : Request ,res : Response,next : NextFunction) 
     });
     const isValid = schema.safeParse({email,password});
     if(isValid) next();
-    return res.status(401).json({
+    else return res.status(401).json({
         message : "Error occured somewhere"
     });
 }
